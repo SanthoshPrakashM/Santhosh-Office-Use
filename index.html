@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module Bazaar – Technical Insights</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/blog.css" />
+</head>
+<body>
+
+  <main class="page-main">
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+      <div class="hero__bg">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK04xxNS-4aDGhim6i0YHdidti1K_iK7xSPdGGjKJMuYHcXwm_dXYT38tn1oN6k7jXb-VAF_pZvWFV4ADznxec1EVK6v3isuRA0LigoIenl-rJRr54hae05ew2g0h4gMM93qY7CVckhgBNcuicjishZr0x80CJcxbZKkppUVQ0k9KKrv25G7IrVbFHQlf78z988EU2I1rv8xFAMSpE3fVx2x8c_q1p9_GirpLXRnAzmRYe1M6eKUX8Jmc-McxrPlYyXj71BI2iOBnj" alt="Enterprise tech" />
+      </div>
+      <div class="hero__content">
+        <span class="badge badge--orange">Featured Story</span>
+        <h1 class="hero__title">Optimizing Magento Performance for Enterprise Scales</h1>
+        <p class="hero__desc">Learn how to leverage Redis caching and Varnish to achieve sub-second load times on high-traffic Magento 2 stores.</p>
+        <a href="article.html" class="btn btn--hero">Read Enterprise Guide</a>
+      </div>
+    </section>
+
+    <!-- ── CONTENT GRID ── -->
+    <div class="content-grid">
+
+      <!-- FEED -->
+      <section class="feed" id="feedSection">
+        <div class="feed__header">
+          <div class="feed__header-left">
+            <h2 class="section-title">Technical Insights</h2>
+            <span class="results-info" id="resultsInfo"></span>
+          </div>
+          <div class="view-toggle">
+            <button class="view-btn active" id="gridBtn" aria-label="Grid view">
+              <span class="material-symbols-outlined">grid_view</span>
+            </button>
+            <button class="view-btn" id="listBtn" aria-label="List view">
+              <span class="material-symbols-outlined">format_list_bulleted</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════
+             ALL CARDS — add/remove freely.
+             JS reads these and paginates (6/page).
+             data-category  → matches sidebar filter
+             data-title      → used for search
+             data-desc       → used for search
+        ════════════════════════════════════════ -->
+        <div class="posts-grid" id="postsGrid">
+
+          <!-- Card 1 -->
+          <article class="card"
+            data-category="PrestaShop"
+            data-title="Securing Your Module Codebase from SQL Injections"
+            data-desc="A comprehensive guide on implementing modern security protocols and sanitization techniques for custom PrestaShop development.">
+            <a href="article.html" class="card__img-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb_hrBnIJl4t4Sol0GjxF2lVxAOX2kI50-2YaY-Vl3T9jDPejHMeWrDHfzFErMML4Bhime9rDBy87wGCe6R1F4WtcEfvMqrEOpfywKPGmshVbKLR7Chsvi5z_3ffkAn6ykrNNcc454a_QRStAAWSFuqUArAvozDcxEO63EZxc-iI9D_NhWLbO0WeOFbn259537jWFyWLzTNZP5cUQDgx2kzcJbcAJ3YRFEo2PYUwss8nmo0mGgjYIZ5gNSXfkw-rlFGrydkoD8zaFz" alt="PrestaShop Security" loading="lazy" />
+            </a>
+            <div class="card__body">
+              <span class="badge badge--blue">PrestaShop</span>
+              <h3 class="card__title"><a href="article.html">Securing Your Module Codebase from SQL Injections</a></h3>
+              <p class="card__desc">A comprehensive guide on implementing modern security protocols and sanitization techniques for custom PrestaShop development.</p>
+              <div class="card__footer">
+                <time class="card__date">Oct 24, 2024</time>
+                <a href="article.html" class="read-more">Read More <span class="material-symbols-outlined">arrow_forward</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card"
+            data-category="Magento"
+            data-title="Advanced Analytics Integration with Magento Commerce"
+            data-desc="Transforming raw data into actionable insights using our custom reporting modules and Google BigQuery connectors.">
+            <a href="article.html" class="card__img-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg1Qg2-hmJun2ytTgzIb2ryPm1UV1pq-OQzs_dggNDK2Y24U6CbHCJD-mFh1CjaIWb6R-6tGHceFhRriwpRt-T5kNwxgKAplofyhoHh_eQS7zepz4MD6D464v6utWF8kUo61iLRYfmb6dDWjT_p9Ed574XhFUEFECXiq0yW3lO1G5ULjwTspYYWK734F4jxXN0jF37XQbMtJxGPqjfSDs7Tz5vfDx_N8Di_QrwZLfeJPPMaNDR_2cyo_779AmmLHXRj61gNo1uxVGS" alt="Analytics" loading="lazy" />
+            </a>
+            <div class="card__body">
+              <span class="badge badge--blue">Magento</span>
+              <h3 class="card__title"><a href="article.html">Advanced Analytics Integration with Magento Commerce</a></h3>
+              <p class="card__desc">Transforming raw data into actionable insights using our custom reporting modules and Google BigQuery connectors.</p>
+              <div class="card__footer">
+                <time class="card__date">Oct 20, 2024</time>
+                <a href="article.html" class="read-more">Read More <span class="material-symbols-outlined">arrow_forward</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card"
+            data-category="Architecture"
+            data-title="Moving Towards Headless E-commerce with APIs"
+            data-desc="Why decoupling your frontend can lead to faster deployments and improved user experiences across different platforms.">
+            <a href="article.html" class="card__img-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMKNuAHJMjd-lQj6UgafNwDHf3Mmf38VPZ-mU6v40AHtAD3SJR0pyNP2wxlrCM-CXNa4etIV3l1HIBq8Fx3DVKtgtX2guCpThQ-jSW4KUMM_9i_0i4U-f5JVmNBnoPI75cIGM50LfMOIPV4ki_9aKLaPlbb5I27Gvf9URo9J4uUWUNNjaA-9X93mCnBel8nOY29H6Q7BzEvCm4D5uuO58pztCVouQ6-0a8F3MjIZkIwyC11kS6u8Rfa8oXFBdpD_R-3xG64-Pgl7Ql" alt="Architecture" loading="lazy" />
+            </a>
+            <div class="card__body">
+              <span class="badge badge--blue">Architecture</span>
+              <h3 class="card__title"><a href="article.html">Moving Towards Headless E-commerce with APIs</a></h3>
+              <p class="card__desc">Why decoupling your frontend can lead to faster deployments and improved user experiences across different platforms.</p>
+              <div class="card__footer">
+                <time class="card__date">Oct 15, 2024</time>
+                <a href="article.html" class="read-more">Read More <span class="material-symbols-outlined">arrow_forward</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article class="card"
+            data-category="Community"
+            data-title="Module Bazaar's Vision for E-commerce in 2025"
+            data-desc="A roadmap of upcoming extensions, marketplace updates, and our commitment to technical excellence in web development.">
+            <a href="article.html" class="card__img-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGX-J6VcgOszPqtBkvlhAUr-uY5-jvDin1N0VTlEFj8M_UTl9jdzB5SqBZHPSsprZiOqgk1jvWiUsVf-TwLhcdCrlyevEre4L1M0-kqcR68hDr1mStFf4WizQdTmNwv1RrrN4wfL6SFKIIoCUxghTX6BruRRRL3JIv92CgSXZydSk2SZfK_7GA2rBtVFajt-SoW57mxmEIK13crEHisCPHG9kwNW4dD3l9phPkNlOaLpy7UXgP17OqaWRw_OaFe_Z5Oaltr2kSVxIQ" alt="Community" loading="lazy" />
+            </a>
+            <div class="card__body">
+              <span class="badge badge--blue">Community</span>
+              <h3 class="card__title"><a href="article.html">Module Bazaar's Vision for E-commerce in 2025</a></h3>
+              <p class="card__desc">A roadmap of upcoming extensions, marketplace updates, and our commitment to technical excellence in web development.</p>
+              <div class="card__footer">
+                <time class="card__date">Oct 12, 2024</time>
+                <a href="article.html" class="read-more">Read More <span class="material-symbols-outlined">arrow_forward</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5 -->
+          <article class="card"
+            data-category="Security"
+            data-title="CSRF & XSS: Advanced Defence Patterns for Magento Modules"
+            data-desc="Deep-dive into cross-site scripting mitigation strategies and request forgery defences for enterprise Magento deployments.">
+            <a href="article.html" class="card__img-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb_hrBnIJl4t4Sol0GjxF2lVxAOX2kI50-2YaY-Vl3T9jDPejHMeWrDHfzFErMML4Bhime9rDBy87wGCe6R1F4WtcEfvMqrEOpfywKPGmshVbKLR7Chsvi5z_3ffkAn6ykrNNcc454a_QRStAAWSFuqUArAvozDcxEO63EZxc-iI9D_NhWLbO0WeOFbn259537jWFyWLzTNZP5cUQDgx2kzcJbcAJ3YRFEo2PYUwss8nmo0mGgjYIZ5gNSXfkw-rlFGrydkoD8zaFz" alt="Security" loading="lazy" />
+            </a>
+            <div class="card__body">
+              <span class="badge badge--blue">Security</span>
+              <h3 class="card__title"><a href="article.html">CSRF &amp; XSS: Advanced Defence Patterns for Magento Modules</a></h3>
+              <p class="card__desc">Deep-dive into cross-site scripting mitigation strategies and request forgery defences for enterprise Magento deployments.</p>
+              <div class="card__footer">
+                <time class="card__date">Oct 08, 2024</time>
+                <a href="article.html" class="read-more">Read More <span class="material-symbols-outlined">arrow_forward</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6 -->
+          <article class="card"
+            data-category="Architecture"
+            data-title="Microservices vs Monolith: Choosing the Right E-commerce Stack"
+            data-desc="A practical framework for deciding when to split your e-commerce platform into microservices and when a monolith still wins.">
+            <a href="article.html" class="card__img-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMKNuAHJMjd-lQj6UgafNwDHf3Mmf38VPZ-mU6v40AHtAD3SJR0pyNP2wxlrCM-CXNa4etIV3l1HIBq8Fx3DVKtgtX2guCpThQ-jSW4KUMM_9i_0i4U-f5JVmNBnoPI75cIGM50LfMOIPV4ki_9aKLaPlbb5I27Gvf9URo9J4uUWUNNjaA-9X93mCnBel8nOY29H6Q7BzEvCm4D5uuO58pztCVouQ6-0a8F3MjIZkIwyC11kS6u8Rfa8oXFBdpD_R-3xG64-Pgl7Ql" alt="Microservices" loading="lazy" />
+            </a>
+            <div class="card__body">
+              <span class="badge badge--blue">Architecture</span>
+              <h3 class="card__title"><a href="article.html">Microservices vs Monolith: Choosing the Right E-commerce Stack</a></h3>
+              <p class="card__desc">A practical framework for deciding when to split your e-commerce platform into microservices and when a monolith still wins.</p>
+              <div class="card__footer">
+                <time class="card__date">Oct 05, 2024</time>
+                <a href="article.html" class="read-more">Read More <span class="material-symbols-outlined">arrow_forward</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 7 -->
+          <article class="card"
+            data-category="PrestaShop"
+            data-title="Mastering PrestaShop Hooks for Clean Module Development"
+            data-desc="How to use action and filter hooks correctly to write non-invasive, upgrade-safe PrestaShop modules at scale.">
+            <a href="article.html" class="card__img-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb_hrBnIJl4t4Sol0GjxF2lVxAOX2kI50-2YaY-Vl3T9jDPejHMeWrDHfzFErMML4Bhime9rDBy87wGCe6R1F4WtcEfvMqrEOpfywKPGmshVbKLR7Chsvi5z_3ffkAn6ykrNNcc454a_QRStAAWSFuqUArAvozDcxEO63EZxc-iI9D_NhWLbO0WeOFbn259537jWFyWLzTNZP5cUQDgx2kzcJbcAJ3YRFEo2PYUwss8nmo0mGgjYIZ5gNSXfkw-rlFGrydkoD8zaFz" alt="PrestaShop Hooks" loading="lazy" />
+            </a>
+            <div class="card__body">
+              <span class="badge badge--blue">PrestaShop</span>
+              <h3 class="card__title"><a href="article.html">Mastering PrestaShop Hooks for Clean Module Development</a></h3>
+              <p class="card__desc">How to use action and filter hooks correctly to write non-invasive, upgrade-safe PrestaShop modules at scale.</p>
+              <div class="card__footer">
+                <time class="card__date">Sep 30, 2024</time>
+                <a href="article.html" class="read-more">Read More <span class="material-symbols-outlined">arrow_forward</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 8 -->
+          <article class="card"
+            data-category="Magento"
+            data-title="Building a PWA Storefront on Magento 2 with React"
+            data-desc="Step-by-step guide to setting up Magento PWA Studio, customising Venia components, and deploying to a CDN edge.">
+            <a href="article.html" class="card__img-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg1Qg2-hmJun2ytTgzIb2ryPm1UV1pq-OQzs_dggNDK2Y24U6CbHCJD-mFh1CjaIWb6R-6tGHceFhRriwpRt-T5kNwxgKAplofyhoHh_eQS7zepz4MD6D464v6utWF8kUo61iLRYfmb6dDWjT_p9Ed574XhFUEFECXiq0yW3lO1G5ULjwTspYYWK734F4jxXN0jF37XQbMtJxGPqjfSDs7Tz5vfDx_N8Di_QrwZLfeJPPMaNDR_2cyo_779AmmLHXRj61gNo1uxVGS" alt="Magento PWA" loading="lazy" />
+            </a>
+            <div class="card__body">
+              <span class="badge badge--blue">Magento</span>
+              <h3 class="card__title"><a href="article.html">Building a PWA Storefront on Magento 2 with React</a></h3>
+              <p class="card__desc">Step-by-step guide to setting up Magento PWA Studio, customising Venia components, and deploying to a CDN edge.</p>
+              <div class="card__footer">
+                <time class="card__date">Sep 25, 2024</time>
+                <a href="article.html" class="read-more">Read More <span class="material-symbols-outlined">arrow_forward</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 9 -->
+          <article class="card"
+            data-category="Community"
+            data-title="Module Bazaar Developer Summit 2024 Recap"
+            data-desc="Highlights from our annual developer summit — new partnerships, extension showcases, and the community roadmap for 2025.">
+            <a href="article.html" class="card__img-wrap">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGX-J6VcgOszPqtBkvlhAUr-uY5-jvDin1N0VTlEFj8M_UTl9jdzB5SqBZHPSsprZiOqgk1jvWiUsVf-TwLhcdCrlyevEre4L1M0-kqcR68hDr1mStFf4WizQdTmNwv1RrrN4wfL6SFKIIoCUxghTX6BruRRRL3JIv92CgSXZydSk2SZfK_7GA2rBtVFajt-SoW57mxmEIK13crEHisCPHG9kwNW4dD3l9phPkNlOaLpy7UXgP17OqaWRw_OaFe_Z5Oaltr2kSVxIQ" alt="Summit" loading="lazy" />
+            </a>
+            <div class="card__body">
+              <span class="badge badge--blue">Community</span>
+              <h3 class="card__title"><a href="article.html">Module Bazaar Developer Summit 2024 Recap</a></h3>
+              <p class="card__desc">Highlights from our annual developer summit — new partnerships, extension showcases, and the community roadmap for 2025.</p>
+              <div class="card__footer">
+                <time class="card__date">Sep 20, 2024</time>
+                <a href="article.html" class="read-more">Read More <span class="material-symbols-outlined">arrow_forward</span></a>
+              </div>
+            </div>
+          </article>
+
+        </div><!-- /.posts-grid -->
+
+        <!-- Pagination — built by JS -->
+        <nav class="pagination" id="pagination" aria-label="Page navigation"></nav>
+
+      </section><!-- /.feed -->
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <div class="sidebar-widget">
+          <h4 class="widget-title">Search Resources</h4>
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Type keywords…" aria-label="Search" />
+            <button id="searchBtn" aria-label="Search">
+              <span class="material-symbols-outlined">search</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4 class="widget-title">Categories</h4>
+          <ul class="category-list">
+            <li class="category-item active" data-category="all">
+              <span class="category-name">All Posts</span>
+              <span class="category-count">09</span>
+            </li>
+            <li class="category-item" data-category="PrestaShop">
+              <span class="category-name">PrestaShop Development</span>
+              <span class="category-count">02</span>
+            </li>
+            <li class="category-item" data-category="Magento">
+              <span class="category-name">Magento Extensions</span>
+              <span class="category-count">03</span>
+            </li>
+            <li class="category-item" data-category="Architecture">
+              <span class="category-name">Performance Optimization</span>
+              <span class="category-count">02</span>
+            </li>
+            <li class="category-item" data-category="Community">
+              <span class="category-name">Marketplace News</span>
+              <span class="category-count">02</span>
+            </li>
+            <li class="category-item" data-category="Security">
+              <span class="category-name">Security Advisories</span>
+              <span class="category-count">01</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4 class="widget-title">Recent Posts</h4>
+          <div class="recent-posts">
+            <a href="article.html" class="recent-post">
+              <div class="recent-post__thumb">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCejnkCxkI3Kl7nriZ6BYgo_Oxedws496LY1l3Wx_rL0P7IrPOvWvO2e6Qe9VDNsQZFvT6kTX5q83b2Z5-b2PVQOBwLQ8aAu4-mUZcLINyWddhu9KkT7LlSCJxVBCaMwCwgXDT0XgKm6mHInhGjfQr0CnIL65JP866HMJHCD7mqJw_p97iIfQa_vgsDQJwCR7RJr6Qy4dxRKpO5jTDnf9vKINZUTyp67lXX7VHanlnXF9iIwrk5oQ41IcnaQ92xSNTETU_9mj1VHsqy" alt="MySQL" loading="lazy" />
+              </div>
+              <div class="recent-post__info">
+                <h5 class="recent-post__title">Scaling Database Queries in MySQL 8.0</h5>
+                <time class="recent-post__date">2 days ago</time>
+              </div>
+            </a>
+            <a href="article.html" class="recent-post">
+              <div class="recent-post__thumb">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlI8W8ZVZEgLRJuFOWIueFclOpqDP4KYEclelJs5sdWyYNWIjoPnKOtb9oZpzHvJBiEyYouwXKPwRd9wHjb6R-HYE8AoUk58Um3y10iULc8e6yUaVaSxjiaXeUC2ET1hcVmoUP_rtaLXM7u7bt8lnRYTXyvvo3iL8e_RySWENhi_18aPQ_InDMKwrSQHH_IUWOUyEDdBDIZvMeJaceh3KhJXzYXoUckFfNe4hO5doyIwmdsR3NFfWRnGfvc3d-pMQDFdYFJ1KJpEiL" alt="SEO" loading="lazy" />
+              </div>
+              <div class="recent-post__info">
+                <h5 class="recent-post__title">The Impact of Core Web Vitals on SEO</h5>
+                <time class="recent-post__date">5 days ago</time>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="sidebar-widget newsletter">
+          <span class="material-symbols-outlined newsletter__icon">mail</span>
+          <h4 class="newsletter__title">Technical Updates</h4>
+          <p class="newsletter__desc">Get the latest extension releases and technical guides delivered weekly.</p>
+          <input type="email" id="emailInput" class="newsletter__input" placeholder="Work Email" aria-label="Email" />
+          <button class="btn btn--subscribe" id="subscribeBtn">Subscribe</button>
+          <p class="newsletter__msg" id="newsletterMsg" aria-live="polite"></p>
+        </div>
+
+      </aside>
+
+    </div><!-- /.content-grid -->
+  </main>
+
+  <script src="js/blog.js"></script>
+</body>
+</html>

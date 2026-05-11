@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Securing Your Module Codebase from SQL Injections | Module Bazaar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@400,0&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/article.css" />
+</head>
+<body>
+
+  <main class="page-main">
+    <div class="layout-grid">
+
+      <!-- ═══════════════════════════
+           ARTICLE COLUMN
+      ════════════════════════════ -->
+      <article class="article">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html" class="breadcrumb__link">Resources</a>
+          <span class="material-symbols-outlined breadcrumb__sep">chevron_right</span>
+          <a href="index.html" class="breadcrumb__link">PrestaShop</a>
+          <span class="material-symbols-outlined breadcrumb__sep">chevron_right</span>
+          <span class="breadcrumb__current">SQL Injections</span>
+        </nav>
+
+        <!-- Article Header -->
+        <header class="article__header">
+          <div class="article__meta-top">
+            <span class="tag">PrestaShop</span>
+            <span class="article__read-time">
+              <span class="material-symbols-outlined">schedule</span>
+              8 min read
+            </span>
+          </div>
+
+          <h1 class="article__title">Securing Your Module Codebase from SQL Injections</h1>
+
+          <div class="article__byline">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8y5-gRD5bjEtUzkRYcCOHB7WgSPOO1YxZVlEN1qXqhOYCSYUTW567RQNjFEI_pkBInCFDuheygInMysKXCNBKj6QWWDhpTSK-1WAeCwFb0TbyxuQx2JZ2y8906x3sM_RsOhwAfCJ7njrwcBNHbeemTPWYPQFePmi0MHo0-e8rzS71X2v6cXyOO9gM6QDjzjj-3ZFZIC8tS9gREw5-XEXmkj1x0J37Tr1S8LThb3KnAk_ZYSBMRpO2LemwIbe40rYaCb5jDgGyG8q9"
+              alt="David Harrison" class="article__avatar"
+            />
+            <div class="article__author-info">
+              <span class="article__author-name">David Harrison</span>
+              <time class="article__date">Published Oct 24, 2024</time>
+            </div>
+            <div class="article__share-inline">
+              <button class="icon-btn" id="copyLinkBtn" title="Copy link">
+                <span class="material-symbols-outlined">link</span>
+              </button>
+              <button class="icon-btn" id="shareTwitterInlineBtn" title="Share on X">
+                <span class="material-symbols-outlined">share</span>
+              </button>
+            </div>
+          </div>
+        </header>
+
+        <!-- Featured Image -->
+        <figure class="article__hero">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtANSac1rRiaS249TyrMk-uAQyxpy-kTOwrFv8LUQ8OCEn5tTgIeXr0YDXfZzRfo_WJT2_evgtjJMTsvPPGa4MRP0V68IzkHgrc55TyBTCM0_s5r8bRphZ2P-jtvILtY3Ma-mnUj6s4kSEvcdAmfxYnbOwoyCbsXy3WU08_Tey-UqOF_QripennTzybV7mx0JwGnUfZr_LJNuBfqJX9hoQg7prDkJsE7XCWtkIf-p38QMp4KOcsmvE4hyKNWoOE38ACYfjwgtiy4q8"
+            alt="Cybersecurity visualization"
+          />
+          <figcaption>Protecting e-commerce module databases against SQL injection attacks</figcaption>
+        </figure>
+
+        <!-- Article Body -->
+        <div class="article__body">
+
+          <p class="article__lead">In the world of e-commerce module development, technical excellence isn't just about features — it's about engineered trust. SQL injection remains one of the most persistent threats to online businesses, capable of compromising entire databases through seemingly benign input fields.</p>
+
+          <h2 id="one">Understanding the Vulnerability</h2>
+          <p>SQL Injection occurs when untrusted user input is concatenated directly into a database query. This allows attackers to "inject" their own SQL commands, bypassing authentication or extracting sensitive customer data. For PrestaShop and other e-commerce platforms, the stakes involve financial records and personal user information.</p>
+
+          <ul>
+            <li>Always validate and sanitize every input coming from a user.</li>
+            <li>Use prepared statements to separate query logic from data.</li>
+            <li>Implement the principle of least privilege for database users.</li>
+            <li>Regularly audit legacy code for manual query concatenations.</li>
+          </ul>
+
+          <h2 id="two">Implementation via Prepared Statements</h2>
+          <p>Modern frameworks provide robust tools to handle data safely. Below is a standard example of how to refactor a vulnerable query into a secure, parameterized statement using the internal database engine.</p>
+
+          <div class="code-block">
+            <div class="code-block__header">
+              <span class="code-block__lang">PHP</span>
+              <button class="code-block__copy" id="copyCodeBtn" title="Copy code">
+                <span class="material-symbols-outlined">content_copy</span>
+                <span>Copy</span>
+              </button>
+            </div>
+            <pre><code><span class="code-comment">// UNSAFE: Direct concatenation</span>
+$sql = <span class="code-string">"SELECT * FROM "</span> . _DB_PREFIX_ . <span class="code-string">"customer WHERE id_customer = "</span> . $id;
+
+<span class="code-comment">// SECURE: Using pSQL() sanitization or DB abstraction</span>
+$sql = <span class="code-keyword">new</span> <span class="code-class">DbQuery</span>();
+$sql-><span class="code-method">select</span>(<span class="code-string">'*'</span>);
+$sql-><span class="code-method">from</span>(<span class="code-string">'customer'</span>);
+$sql-><span class="code-method">where</span>(<span class="code-string">'id_customer = '</span> . (<span class="code-keyword">int</span>)$id);
+
+$result = <span class="code-class">Db</span>::<span class="code-method">getInstance</span>()-><span class="code-method">executeS</span>($sql);</code></pre>
+          </div>
+
+          <p>By casting variables to specific types (like <code>int</code>) or using built-in sanitization functions like <code>pSQL()</code>, you ensure that the database treats the input as data, never as executable code.</p>
+
+          <h2 id="three">Beyond Basic Sanitization</h2>
+          <p>While pSQL() and type casting are solid first steps, a truly resilient module defence strategy requires a layered approach. Consider implementing database activity monitoring, using an ORM that enforces parameterization by design, and establishing automated security scans as part of your CI/CD pipeline.</p>
+
+          <div class="callout callout--warning">
+            <span class="material-symbols-outlined callout__icon">warning</span>
+            <div>
+              <strong>Security Reminder</strong>
+              <p>Never trust client-side validation alone. Always re-validate and sanitize data server-side before it reaches your database layer.</p>
+            </div>
+          </div>
+
+          <h2 id="four">Testing Your Implementation</h2>
+          <p>After refactoring, automated penetration tests and tools like SQLMap can verify your defences. Pair this with peer code reviews focused on database interactions, and you'll significantly reduce your module's attack surface.</p>
+
+        </div><!-- /.article__body -->
+
+        <!-- Tags -->
+        <div class="article__tags">
+          <span class="tag">PrestaShop</span>
+          <span class="tag">Security</span>
+          <span class="tag">Database</span>
+          <span class="tag">Best Practices</span>
+          <span class="tag">Module Dev</span>
+        </div>
+
+        <!-- Share Bar -->
+        <div class="share-bar">
+          <span class="share-bar__label">Share this article</span>
+          <div class="share-bar__actions">
+            <button class="share-btn" id="shareTwitterBtn">
+              <span class="material-symbols-outlined">share</span>
+              X (Twitter)
+            </button>
+            <button class="share-btn" id="shareLinkBtn">
+              <span class="material-symbols-outlined">link</span>
+              Copy Link
+            </button>
+          </div>
+          <span class="share-bar__toast" id="shareToast">Link copied!</span>
+        </div>
+
+        <!-- Back to blog -->
+        <div class="back-link-wrap">
+          <a href="index.html" class="back-link">
+            <span class="material-symbols-outlined">arrow_back</span>
+            Back to all articles
+          </a>
+        </div>
+
+        <!-- Comments -->
+        <section class="comments" id="comments">
+          <h3 class="comments__title">
+            Discussion
+            <span class="comments__count" id="commentCount">1</span>
+          </h3>
+
+          <div class="comment-list" id="commentList">
+            <div class="comment">
+              <div class="comment__avatar">JD</div>
+              <div class="comment__body">
+                <div class="comment__meta">
+                  <strong class="comment__author">James Doe</strong>
+                  <time class="comment__date">2 days ago</time>
+                </div>
+                <p class="comment__text">This is essential reading for new module developers. I've seen too many plugins fail security audits because of simple concatenation errors.</p>
+                <button class="comment__reply-btn">
+                  <span class="material-symbols-outlined">reply</span> Reply
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <form class="comment-form" id="commentForm" novalidate>
+            <h4 class="comment-form__heading">Leave a comment</h4>
+            <div class="comment-form__row">
+              <div class="form-field">
+                <label for="commenterName">Name</label>
+                <input type="text" id="commenterName" placeholder="Your name" autocomplete="name" />
+                <span class="form-field__error" id="nameError"></span>
+              </div>
+              <div class="form-field">
+                <label for="commenterEmail">Email <span class="form-field__optional">(not published)</span></label>
+                <input type="email" id="commenterEmail" placeholder="your@email.com" autocomplete="email" />
+                <span class="form-field__error" id="emailError"></span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="commenterText">Comment</label>
+              <textarea id="commenterText" rows="4" placeholder="Join the discussion…"></textarea>
+              <span class="form-field__error" id="textError"></span>
+            </div>
+            <button type="submit" class="btn btn--primary">Post Comment</button>
+          </form>
+        </section>
+
+      </article>
+
+      <!-- ═══════════════════════════
+           SIDEBAR
+      ════════════════════════════ -->
+      <aside class="sidebar">
+
+        <div class="read-progress-wrap">
+          <div class="read-progress-bar" id="readProgress"></div>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4 class="widget-title">In This Article</h4>
+          <nav class="toc" id="toc">
+            <a href="#one"   class="toc__link active">Understanding the Vulnerability</a>
+            <a href="#two"   class="toc__link">Implementation via Prepared Statements</a>
+            <a href="#three" class="toc__link">Beyond Basic Sanitization</a>
+            <a href="#four"  class="toc__link">Testing Your Implementation</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4 class="widget-title">Related Articles</h4>
+          <div class="related-list">
+            <a href="article.html" class="related-item">
+              <div class="related-item__img">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMKNuAHJMjd-lQj6UgafNwDHf3Mmf38VPZ-mU6v40AHtAD3SJR0pyNP2wxlrCM-CXNa4etIV3l1HIBq8Fx3DVKtgtX2guCpThQ-jSW4KUMM_9i_0i4U-f5JVmNBnoPI75cIGM50LfMOIPV4ki_9aKLaPlbb5I27Gvf9URo9J4uUWUNNjaA-9X93mCnBel8nOY29H6Q7BzEvCm4D5uuO58pztCVouQ6-0a8F3MjIZkIwyC11kS6u8Rfa8oXFBdpD_R-3xG64-Pgl7Ql" alt="DB" />
+              </div>
+              <div class="related-item__info">
+                <span class="related-item__cat">Performance</span>
+                <h5 class="related-item__title">Optimizing Database Queries for High-Traffic Stores</h5>
+              </div>
+            </a>
+            <a href="article.html" class="related-item">
+              <div class="related-item__img">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb_hrBnIJl4t4Sol0GjxF2lVxAOX2kI50-2YaY-Vl3T9jDPejHMeWrDHfzFErMML4Bhime9rDBy87wGCe6R1F4WtcEfvMqrEOpfywKPGmshVbKLR7Chsvi5z_3ffkAn6ykrNNcc454a_QRStAAWSFuqUArAvozDcxEO63EZxc-iI9D_NhWLbO0WeOFbn259537jWFyWLzTNZP5cUQDgx2kzcJbcAJ3YRFEo2PYUwss8nmo0mGgjYIZ5gNSXfkw-rlFGrydkoD8zaFz" alt="API" />
+              </div>
+              <div class="related-item__info">
+                <span class="related-item__cat">Security</span>
+                <h5 class="related-item__title">Best Practices for API Authentication in Modules</h5>
+              </div>
+            </a>
+            <a href="article.html" class="related-item">
+              <div class="related-item__img">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg1Qg2-hmJun2ytTgzIb2ryPm1UV1pq-OQzs_dggNDK2Y24U6CbHCJD-mFh1CjaIWb6R-6tGHceFhRriwpRt-T5kNwxgKAplofyhoHh_eQS7zepz4MD6D464v6utWF8kUo61iLRYfmb6dDWjT_p9Ed574XhFUEFECXiq0yW3lO1G5ULjwTspYYWK734F4jxXN0jF37XQbMtJxGPqjfSDs7Tz5vfDx_N8Di_QrwZLfeJPPMaNDR_2cyo_779AmmLHXRj61gNo1uxVGS" alt="CSRF" />
+              </div>
+              <div class="related-item__info">
+                <span class="related-item__cat">Security</span>
+                <h5 class="related-item__title">CSRF &amp; XSS Defence Patterns for Magento</h5>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="sidebar-widget newsletter">
+          <span class="material-symbols-outlined newsletter__icon">mail</span>
+          <h4 class="newsletter__title">Technical Insights</h4>
+          <p class="newsletter__desc">Weekly security bulletins and module development tips.</p>
+          <input type="email" id="emailInput" class="newsletter__input" placeholder="your@email.com" aria-label="Email" />
+          <button class="btn btn--subscribe" id="subscribeBtn">Subscribe</button>
+          <p class="newsletter__msg" id="newsletterMsg" aria-live="polite"></p>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <script src="js/article.js"></script>
+</body>
+</html>
